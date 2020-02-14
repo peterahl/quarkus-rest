@@ -57,6 +57,7 @@ public class LikesResource {
             Set<PlayerEntity> plset = game.getPlayers();
             plset.remove(player);
             game.setPlayers(plset);
+            game.setLikes(game.getPlayers().size());
             em.merge(game);
             final GameDTO gdto = new GameDTO(game.getId(), game.getName(), game.getLikes());
             resp = Response.ok(gdto).build();
